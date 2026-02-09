@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Special Nikkah ❤️</title>
+    <style>
+        /* ------------------ Global Styles ------------------ */
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+          font-family:"Segoe UI","Arial",sans-serif;
+          background: linear-gradient(135deg,#e8f5f3,#d1ebe6);
+          overflow:hidden;
+          color:#1a3b3b;
+          display:flex;
+          flex-direction:column;
+          align-items:center;
+          justify-content:center;
+          min-height:100vh;
+          padding:20px;
+          position:relative;
+        }
+
+        /* ------------------ Hero Section ------------------ */
+        .hero { text-align:center; z-index:1; }
+        .hero h1 {
+          font-size:3rem; font-weight:700; margin-bottom:1rem;
+          opacity:0; transform: translateY(-50px);
+          animation: slideFadeIn 1.2s forwards;
+        }
+        .hero p {
+          font-size:1.2rem; max-width:700px; margin:0 auto 2rem auto;
+          line-height:1.6;
+          opacity:0; transform: translateY(-50px);
+          animation: slideFadeIn 1.2s forwards 0.4s;
+        }
+
+        /* ------------------ Quran Verse ------------------ */
+        .verse {
+          background:#f0f8f7; border-left:5px solid #13403f;
+          border-radius:8px; padding:20px; margin:2rem auto;
+          max-width:750px;
+          opacity:0; transform: translateY(-30px);
+          animation: slideFadeIn 1.2s forwards 0.8s;
+        }
+        .verse .arabic {
+          font-size:1.5rem; direction:rtl;
+          font-family:"Amiri","Scheherazade",serif; color:#0d2c2b;
+          margin-bottom:10px;
+        }
+        .verse .translation {
+          font-size:1rem; font-style:italic; color:#1a3b3b;
+        }
+
+        /* ------------------ Button ------------------ */
+        button {
+          padding:15px 30px; font-size:1.1rem; font-weight:600;
+          color:white; background-color:#13403f;
+          border:none; border-radius:6px; cursor:pointer;
+          transition:0.3s; opacity:0; transform: translateY(-20px);
+          animation: slideFadeIn 1.2s forwards 1.2s;
+        }
+        button:hover { background-color:#0f302f; }
+
+        /* ------------------ Surprise Message ------------------ */
+        #surprise {
+          margin-top:25px; font-size:1.2rem; max-width:700px;
+          line-height:1.6; color:#13403f; display:none; text-align:center;
+          white-space: pre-line;
+        }
+
+        /* ------------------ Floating Motifs ------------------ */
+        .motif, .heart, .particle {
+          position:fixed; top:-50px; pointer-events:none; z-index:0;
+        }
+        .motif { font-size:18px; opacity:0.6; color:#a6c8c5; }
+        .heart { font-size:20px; color:#ff6b81; opacity:0.7; }
+        .particle { width:5px; height:5px; background:rgba(255,255,255,0.6);
+          border-radius:50%; opacity:0.6;
+        }
+
+        /* ------------------ Animations ------------------ */
+        @keyframes slideFadeIn { to { opacity:1; transform:translateY(0); } }
+        @keyframes fall { 0%{transform:translateY(-10vh) rotate(0deg); opacity:0.7;} 100%{transform:translateY(110vh) rotate(360deg); opacity:0;} }
+        @keyframes fadeIn { to { opacity:1; } }
+
+        /* ------------------ Photo ------------------ */
+        #photo { display:none; width:200px; border-radius:12px; margin-top:20px; opacity:0; animation: fadeIn 2s forwards; }
+
+        /* ------------------ Footer ------------------ */
+        footer { position:fixed; bottom:10px; width:100%; font-size:0.85rem; color:#555; text-align:center; }
+    </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<div class="hero">
+    <h1>Imran ❤️ Arshiya</h1>
+    <p>
+        <strong>بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</strong> <br>
+        In the name of Allah, the Most Gracious, the Most Merciful<br><br>
+        Nikkah Date: 3rd May 2026 🤍 (15 Dhul Qa'dah 1447 AH)<br>
+        May Allah bless our marriage with sakinah, mawaddah, and rahmah,
+        and keep our hearts united in His deen.
+    </p>
+</div>
+
+<!-- Quran Verse -->
+<div class="verse">
+    <div class="arabic">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ</div>
+    <div class="translation">"And among His signs is that He created for you mates from among yourselves so that you may find tranquility in them; and He placed between you affection and mercy. Indeed in that are signs for a people who reflect." (Quran 30:21)</div>
+</div>
+
+<!-- Reveal Button -->
+<button onclick="showSurprise()">Click for a Special Duʿāʾ 🤍</button>
+
+<!-- Surprise Duʿāʾ -->
+<div id="surprise">
+    اللَّهُمَّ بَارِكْ لَنَا فِي زَوَاجِنَا وَاجْمَعْ بَيْنَنَا فِي خَيْرٍ
+
+    May Allah bless our marriage, protect our bond, and make us righteous together.
+    May we help each other reach Jannah 🤍
+</div>
+
+
+<!-- Nasheed Audio -->
+<audio id="music" src="my_nasheed.mp3" type="audio/mpeg"></audio>
+
+<script>
+    // -------- Show Duʿāʾ + play music --------
+    function showSurprise() {
+        const surprise = document.getElementById("surprise");
+        surprise.style.display = "block"; // show instantly
+
+        const music = document.getElementById("music");
+        music.volume = 0.35;
+        music.play();
+
+    }
+
+    // -------- Floating Motifs --------
+    function createMotif(){
+      const motifs=["☪","✦","✧","🌙","🕊","🕌"];
+      const m=document.createElement("div");
+      m.className="motif";
+      m.innerHTML=motifs[Math.floor(Math.random()*motifs.length)];
+      m.style.left=Math.random()*100+"vw";
+      m.style.fontSize=(Math.random()*18+12)+"px";
+      m.style.animation="fall "+(Math.random()*5+5)+"s linear";
+      document.body.appendChild(m);
+      setTimeout(()=>m.remove(),10000);
+    }
+    setInterval(createMotif,400);
+
+    // -------- Floating Hearts --------
+    function createHeart(){
+      const heart=document.createElement("div");
+      heart.className="heart";
+      heart.innerHTML="❤";
+      heart.style.left=Math.random()*100+"vw";
+      heart.style.fontSize=(Math.random()*30+15)+"px";
+      heart.style.animation="fall "+(Math.random()*5+5)+"s linear";
+      document.body.appendChild(heart);
+      setTimeout(()=>heart.remove(),10000);
+    }
+    setInterval(createHeart,500);
+
+    // -------- Background Particles --------
+    function createParticle(){
+      const particle=document.createElement("div");
+      particle.className="particle";
+      particle.style.left=Math.random()*100+"vw";
+      particle.style.top=Math.random()*100+"vh";
+      particle.style.width=(Math.random()*5+2)+"px";
+      particle.style.height=(Math.random()*5+2)+"px";
+      particle.style.animation="fall "+(Math.random()*10+5)+"s linear";
+      document.body.appendChild(particle);
+      setTimeout(()=>particle.remove(),15000);
+    }
+    setInterval(createParticle,300);
+</script>
+
+</body>
+</html>
